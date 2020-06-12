@@ -1,9 +1,16 @@
 const { Router } = require('express');
 const router = Router();
 
-router.route('/')
-    .get((req, res) => res.send('Users Routes'))
+const { pegaUsers, pegaUser, modificaUser, criaUser, apagaUser } = require('../controllers/users.controllers')
 
+router.route('/')
+    .get(pegaUsers)
+    .post(criaUser);
+
+router.route('/:id')
+    .get(pegaUser)
+    .put(modificaUser)
+    .delete(apagaUser)
 
 
 module.exports = router;

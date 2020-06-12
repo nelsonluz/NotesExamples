@@ -1,13 +1,16 @@
 const { Router } = require('express');
 const router = Router();
 
+const { pegaNotas, criaNota, pegaNota, modificaNota, apagaNota } = require('../controllers/notes.contrllers');
 
 router.route('/')
-    .get((req, res) => res.send('Notes Routes'))
-    // .post()
+    .get(pegaNotas)
+    .post(criaNota);
 
-// router.router('/:id')
-//     .get()
-//     .put()
-//     .delete()
+router.route('/:id')
+    .get(pegaNota)
+    .put(modificaNota)
+    .delete(apagaNota)
+
+
 module.exports = router;
